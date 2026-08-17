@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2</title>
+  <style>
+    .highlight {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <label>
+    <span>Upload file</span>
+    <input id="uploadInput" type="file" accept="application/json" />
+  </label>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Topic</th>
+        <th>Pro</th>
+        <th>Con</th>
+        <th>Abs</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById("uploadInput").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = JSON.parse(e.target.result);
+        console.log(data);
+        const total = data.votes.length;
+        const pro = data.votes.filter(v => v.vote == "pro").length;
+        const con = data.votes.filter(v => v.vote == "con").length;
+        const abs = data.votes.filter(v => v.vote == "abs").length;
+        document.querySelector("tbody").innerHTML = `
+          <tr>
+            <td>${data.title}</td>
+            <td>${data.topic}</td>
+            <td class="${pro > con && pro > abs ? 'highlight' : ''}">${pro} (${Math.round(10000 / total * pro) / 100}%)</td>
+            <td class="${con > pro && con > abs ? 'highlight' : ''}">${con} (${Math.round(10000 / total * con) / 100}%)</td>
+            <td class="${abs > pro && abs > con ? 'highlight' : ''}">${abs} (${Math.round(10000 / total * abs) / 100}%)</td>
+          </tr>
+        `
+      }
+      reader.readAsText(file);
+    })
+  </script>
+</body>
+</html>
