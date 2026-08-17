@@ -30,3 +30,71 @@ body{
   object-fit: cover;
   transition: 0.5s;
 }
+
+.container {
+  transition: 0.5s;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.container:has(.img-box:nth-child(1):hover) {
+  perspective-origin: 100px;
+}
+.container:has(.img-box:nth-child(2):hover) {
+  perspective-origin: 300px;
+}
+.container:has(.img-box:nth-child(3):hover) {
+  perspective-origin: 500px;
+}
+.container:has(.img-box:nth-child(4):hover) {
+  perspective-origin: 700px;
+}
+.container:has(.img-box:nth-child(5):hover) {
+  perspective-origin: 900px;
+}
+
+.img-box {
+  transform-style: preserve-3d;
+}
+
+.img-box:hover {
+  transform: translateZ(200px);
+  z-index: 2;
+}
+
+.img-box:has(~ .img-box:hover) {
+  transform: rotateY(40deg);
+}
+
+.img-box:hover ~ .img-box {
+  transform: rotateY(-40deg);
+}
+
+.img-box::after {
+  display: block;
+  content: "";
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  transform: scaleY(-1);
+  mask-image: linear-gradient(to top, transparent, #00000080 10%, transparent 80%);
+  position: absolute;
+  top: 200px;
+}
+
+.img-box:nth-child(1)::after {
+  background-image: url(./imgs/1.png);
+}
+.img-box:nth-child(2)::after {
+  background-image: url(./imgs/2.png);
+}
+.img-box:nth-child(3)::after {
+  background-image: url(./imgs/3.png);
+}
+.img-box:nth-child(4)::after {
+  background-image: url(./imgs/4.png);
+}
+.img-box:nth-child(5)::after {
+  background-image: url(./imgs/5.png);
+}
