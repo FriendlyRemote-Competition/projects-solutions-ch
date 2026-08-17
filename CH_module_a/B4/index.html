@@ -1,0 +1,69 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B4</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="tabs">
+      <div class="tab-buttons" id="tabButtons">
+        <button data-tab="about" class="active">About</button>
+        <button data-tab="history">History</button>
+        <button data-tab="objectives">Objectives</button>
+        <button data-tab="impact">Impact</button>
+      </div>
+      <div class="tab active" id="about">
+        <h2>Introduction to WorldSkills</h2>
+        <p>
+          WorldSkills is a global platform for young professionals to
+          demonstrate their skills in various trades and technologies. It aims
+          to raise the profile and confidence of skilled people and show how
+          important skills are in achieving economic growth.
+        </p>
+        <a href="">Learn more</a>
+      </div>
+      <div class="tab" id="history">
+        <h2>History of WorldSkills</h2>
+        <p>
+          WorldSkills was founded in 1950 and has since grown to include
+          participants from over 80 countries. The competition showcases a wide
+          range of skills, from traditional trades to multi-skilled technology
+          jobs.
+        </p>
+        <a href="">Learn more</a>
+      </div>
+      <div class="tab" id="objectives">
+        <h2>Objectives of the Competition</h2>
+        <p>
+          The competition aims to inspire young people to develop a passion for
+          skills and pursue excellence through competition, events, and
+          initiatives. It promotes international cooperation and exchange of
+          knowledge.
+        </p>
+        <a href="">Learn more</a>
+      </div>
+      <div class="tab" id="impact">
+        <h2>Impact and Legacy</h2>
+        <p>
+          WorldSkills leaves a lasting impact on participants by enhancing their
+          skills, boosting their career prospects, and fostering a global
+          network of skilled professionals. It also influences education and
+          training standards worldwide.
+        </p>
+        <a href="">Learn more</a>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    document.getElementById("tabButtons").querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById("tabButtons").querySelectorAll("button").forEach((other) => other.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"));
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</html>
