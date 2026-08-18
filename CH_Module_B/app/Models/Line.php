@@ -25,4 +25,14 @@ class Line extends Model
     {
         return $this->hasMany(ServiceWindow::class, "line_code");
     }
+
+    public function cancelled_departures()
+    {
+        return $this->hasMany(CancelledDeparture::class, "line_code");
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, "line_code");
+    }
 }
