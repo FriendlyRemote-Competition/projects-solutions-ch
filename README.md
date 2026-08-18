@@ -19,6 +19,8 @@ php artisan migrate --seed
 
 http://localhost/CH_Module_B
 
+When testing using Bruno, I had to use the baseUrl `http://127.0.0.1/CH_Module_B`
+
 ## Vue:
 
 http://localhost/test-vue
