@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class AdminLineController extends Controller
 {
+    /**
+     * Create a line as an admin.
+     */
     public function store(LineRequest $request)
     {
         $line = Line::create(array_merge(
@@ -18,6 +21,9 @@ class AdminLineController extends Controller
         return response()->json(["data" => $line->toResource()], 201);
     }
 
+    /**
+     * Update a line as an admin.
+     */
     public function update(LineRequest $request, Line $line)
     {
         // TODO seat_capacity validaiton

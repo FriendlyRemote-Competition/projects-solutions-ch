@@ -7,6 +7,9 @@ use Carbon\Carbon;
 
 class Departure
 {
+  /**
+   * Get a list of depatures for the given line on the given date (Default today). Can be filtered by a station code
+   */
   public static function get_departures(Line $line, Carbon|null $date = null, string|null $station_code = null)
   {
     if (!$date) $date = today();
@@ -16,13 +19,19 @@ class Departure
     foreach ($line->service_windows()->orderBy("service_start")->get() as $sw) {
       $time = Carbon::parse($sw->service_start);
       $end_time = Carbon::parse($sw->service_end);
+      
+      // Iterate all times between start and end
       while ($time < $end_time) {
+        // Iterate all stations on line
         foreach (collect([$line->station_a, $line->station_b])->sortBy(fn($s) => $s['station_code']) as $station) {
           if ($station_code && $station->station_code != $station_code) {
+            // Skip stations not in filter if applied 
             continue;
           }
+
           $cancelled_depature = $line->cancelled_departures()->where("departure_station", $station->station_code)->where("departure_time", $time)->where("departure_date", $date)->first();
           $bookings_count = $line->bookings()->where("departure_station", $station->station_code)->where("departure_time", $time)->where("departure_date", $date)->count();
+
           $departures[] = [
             "code" => $station->station_code . "-" . $date->format("Ymd") . "-" . $time->format("Hi") . "-" . $line->line_code,
             "origin" => ["code" => $station->station_code, "name" => $station->station_name],
@@ -36,6 +45,8 @@ class Departure
             "cancellation_reason" => $cancelled_depature?->reason,
           ];
         }
+
+        // Add the interval to the time
         $time->addMinutes($sw->interval_minutes);
       }
     }

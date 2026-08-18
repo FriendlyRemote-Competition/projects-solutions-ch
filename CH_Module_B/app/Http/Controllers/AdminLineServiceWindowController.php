@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class AdminLineServiceWindowController extends Controller
 {
+    /**
+     * Create a service window for a line as an admin.
+     */
     public function store(Request $request, Line $line)
     {
         $request->validate([
@@ -16,6 +19,7 @@ class AdminLineServiceWindowController extends Controller
             "interval_minutes" => "required|integer|min:" . $line->crossing_minutes . "|max:120",
         ]);
 
+        // Check if service window is overlapping another in the line.
         if ($line->service_windows()->where("service_start", ">=", $request->start_time)->where("service_end", "<=", $request->end_time)->exists()){
             return response()->json(["message" => "Service window overlaps an existing window"], 422);
         }
@@ -29,6 +33,9 @@ class AdminLineServiceWindowController extends Controller
         return response()->json($request->all(), 201);
     }
 
+    /**
+     * Delete a service window for a line as an admin.
+     */
     public function delete(Request $request, Line $line, string $start_time)
     {
         $serviceWindow = $line->service_windows()->where("service_start", $start_time)->first();

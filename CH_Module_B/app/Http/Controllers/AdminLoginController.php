@@ -9,6 +9,9 @@ use Illuminate\Support\Str;
 
 class AdminLoginController extends Controller
 {
+    /**
+     * Login as an admin or dispatcher
+     */
     public function store(Request $request)
     {
         $request->validate([

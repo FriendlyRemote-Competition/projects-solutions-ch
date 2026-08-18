@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    /**
+     * Create a booking. Only validation implemented.
+     */
     public function store(Request $request)
     {
         $request->validate([
