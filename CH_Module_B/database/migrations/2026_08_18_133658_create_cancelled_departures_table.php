@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cancelled_departures', function (Blueprint $table) {
             $table->id();
-            $table->string("line_code", 2);
+            $table->string("line_code", 4);
             $table->foreign("line_code")->references("line_code")->on("lines")->cascadeOnDelete();
             $table->date("departure_date");
             $table->time("departure_time");

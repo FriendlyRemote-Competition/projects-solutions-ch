@@ -9,6 +9,7 @@ class Line extends Model
     protected $primaryKey = "line_code";
     protected $keyType = 'string';
     public $timestamps = false;
+    protected $guarded = [];
 
     public function station_a()
     {

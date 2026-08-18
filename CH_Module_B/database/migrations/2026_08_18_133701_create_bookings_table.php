@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->string("booking_code", 10)->primary();
-            $table->string("line_code", 2);
+            $table->string("line_code", 4);
             $table->foreign("line_code")->references("line_code")->on("lines")->cascadeOnDelete();
             $table->date("departure_date");
             $table->time("departure_time");
@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string("first_name", 255);
             $table->string("last_name", 255);
             $table->string("email", 255);
-            $table->integer("setas");
+            $table->integer("seats");
+            $table->float("total_cny");
         });
     }
 

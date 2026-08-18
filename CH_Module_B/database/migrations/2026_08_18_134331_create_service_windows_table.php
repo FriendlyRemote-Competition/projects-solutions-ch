@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('service_windows', function (Blueprint $table) {
             $table->id();
-            $table->string("line_code", 2);
+            $table->string("line_code", 4);
             $table->foreign("line_code")->references("line_code")->on("lines")->cascadeOnDelete();
             $table->time("service_start");
             $table->time("service_end");

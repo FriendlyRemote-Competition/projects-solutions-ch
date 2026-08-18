@@ -26,6 +26,7 @@ Route::middleware("auth:api")->prefix("admin")->group(function () {
 
   Route::middleware("can:admin")->group(function () {
     Route::resource("lines", AdminLineController::class)->only("store", "update");
-    Route::resource("lines.service-windows", AdminLineServiceWindowController::class)->only("store", "delete");
+    Route::resource("lines.service-windows", AdminLineServiceWindowController::class)->only("store");
+    Route::delete("lines/{line}/service-windows/{start_time}", [AdminLineServiceWindowController::class, "delete"]);
   });
 });
