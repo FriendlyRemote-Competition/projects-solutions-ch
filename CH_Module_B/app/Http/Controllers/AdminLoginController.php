@@ -16,7 +16,7 @@ class AdminLoginController extends Controller
             "password" => "required",
         ]);
 
-        $user = User::where("email", $request->email)->first();
+        $user = User::where("is_active", 1)->where("email", $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             $user->update(["token" => Str::random(60)]);

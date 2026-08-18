@@ -20,7 +20,7 @@ Route::resource("bookings", BookingController::class)->only("store", "update");
 Route::resource("bookings/lookup", BookingLookupController::class)->only("store");
 Route::resource("bookings.cancel", BookingCancelController::class)->only("store");
 
-Route::middleware("auth:api")->group(function () {
+Route::middleware("auth:api")->prefix("admin")->group(function () {
   Route::resource("bookings", AdminBookingController::class)->only("index");
   Route::resource("departures.cancel", AdminDepartureCancelController::class)->only("store");
 
