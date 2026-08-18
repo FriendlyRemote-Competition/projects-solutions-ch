@@ -9,4 +9,5 @@ class Booking extends Model
     protected $primaryKey = "booking_code";
     protected $keyType = 'string';
     public $timestamps = false;
+    protected $guarded = [];
 }
