@@ -1,0 +1,33 @@
+meta {
+  name: Login
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/admin/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "admin1@hpferry.cn",
+    "password": "admin123"
+  }
+}
+
+script:post-response {
+  if (res.getStatus() === 200) {
+    bru.setEnvVar("token", res.getBody().data.token);
+  }
+}
+
+docs {
+  Authenticates a staff account and returns a Bearer token.
+  On success the token is stored into the `token` environment variable
+  and reused by all `/api/admin/*` requests in this collection.
+
+  Response 401 (`{"message": "Invalid credentials"}`) for wrong
+  credentials or an inactive account (e.g. dispatch2@hpferry.cn).
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Cancel Booking
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/bookings/{{bookingCode}}/cancel
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "first_name": "Lin",
+    "last_name": "Wei"
+  }
+}
+
+docs {
+  Cancel a booking. Sets `status` to `cancelled` and `cancelled_at` to now;
+  the seats become available again.
+
+  - Names verified as in lookup (404 on mismatch)
+  - Booking must be `confirmed` (422 `{"message": "Booking is already cancelled"}`)
+  - Departure must not have left: 422 `{"message": "Booking closed for this departure"}`
+    once it is within 5 minutes of departure
+}

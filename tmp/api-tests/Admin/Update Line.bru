@@ -1,0 +1,37 @@
+meta {
+  name: Update Line
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{baseUrl}}/api/admin/lines/WS
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Wusong Line",
+    "station_a_code": "TQO",
+    "station_b_code": "GPR",
+    "seat_capacity": 30,
+    "crossing_minutes": 14,
+    "fare_cny": "3.00",
+    "status": "active"
+  }
+}
+
+docs {
+  admin only. Updates a line (full object except the code).
+  Same validation as Create Line.
+  
+  If `seat_capacity` would drop below the seats already booked on any future
+  departure of the line, respond 422 (`{"message": "Capacity is lower than
+  seats already booked"}`) and change nothing.
+  Changing the fare does not change the total of existing bookings.
+}

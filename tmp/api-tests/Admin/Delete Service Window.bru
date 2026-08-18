@@ -1,0 +1,25 @@
+meta {
+  name: Delete Service Window
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/api/admin/lines/WS/service-windows/06:00
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  admin only. Deletes the service window of a line identified by its start time.
+
+  Responds 200 `{"message": "Service window deleted"}`.
+  404 if the line does not exist or has no service window with that start time.
+
+  Existing bookings are not deleted, even when the departure they belong to no
+  longer exists as a result; such a booking still resolves through lookup.
+}

@@ -1,0 +1,33 @@
+meta {
+  name: Cancel Departure
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/admin/departures/DJ-20260916-0730-DCL/cancel
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "reason": "Dense fog on the river"
+  }
+}
+
+docs {
+  admin & dispatcher. Cancel a single sailing.
+  `reason` is optional, max 200 characters.
+
+  - 404 if the departure does not exist
+  - 422 `{"message": "Departure is already cancelled"}` if already cancelled
+  - 422 `{"message": "Departure has already departed"}` if its time is at or before now
+  - Every confirmed booking on that departure is cancelled as well
+
+  Responds `{"data": {"affected_bookings": N}}`.
+}

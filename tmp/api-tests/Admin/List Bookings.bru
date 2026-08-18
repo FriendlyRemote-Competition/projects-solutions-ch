@@ -1,0 +1,35 @@
+meta {
+  name: List Bookings
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/admin/bookings?date=2026-09-16&line_code=DJ&status=confirmed&search=wei&page=1
+  body: none
+  auth: bearer
+}
+
+params:query {
+  date: 2026-09-16
+  line_code: DJ
+  status: confirmed
+  search: wei
+  page: 1
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+docs {
+  admin & dispatcher. All bookings, paginated 15 per page.
+  Sorted by departure_date, then departure_time, then booking_code (all ascending).
+  
+  - `date` optional, defaults to today, `YYYY-MM-DD` (422 otherwise)
+  - `line_code` optional (422 if the line does not exist)
+  - `status` optional (422 if invalid)
+  - `search` optional, case-insensitive partial match over booking code,
+    first name, last name and email
+  - `page` optional, defaults to 1, must be > 0 (422 otherwise)
+}

@@ -1,0 +1,35 @@
+meta {
+  name: Create Service Window
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/api/admin/lines/WS/service-windows
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "start_time": "06:00",
+    "end_time": "07:59",
+    "interval_minutes": 20
+  }
+}
+
+docs {
+  admin only. Creates a new service window for a line.
+
+  Validation (422 on failure):
+  - `start_time` and `end_time` are `HH:MM`
+  - `end_time` must be after `start_time`
+  - `interval_minutes` min: line's `crossing_minutes`, max: 120
+
+  The new window must not overlap an existing window of the same line
+  (422 `{"message": "Service window overlaps an existing window"}`).
+}

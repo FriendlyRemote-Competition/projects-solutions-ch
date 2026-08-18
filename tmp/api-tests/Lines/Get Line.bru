@@ -1,0 +1,16 @@
+meta {
+  name: Get Line
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/lines/DJ
+  body: none
+  auth: none
+}
+
+docs {
+  Single line by code, same fields as in List Lines, within a `data` property.
+  Returns 404 (`{"message": "Resource not found"}`) if the code is unknown.
+}

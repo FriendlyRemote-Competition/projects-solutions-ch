@@ -1,0 +1,31 @@
+meta {
+  name: Update Booking
+  type: http
+  seq: 3
+}
+
+patch {
+  url: {{baseUrl}}/api/bookings/{{bookingCode}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "first_name": "Lin",
+    "last_name": "Wei",
+    "seats": 4
+  }
+}
+
+docs {
+  Change the number of seats on an existing booking.
+  
+  - Names verified as in lookup (404 on mismatch)
+  - Booking must be `confirmed`; a cancelled one returns 422
+    (`{"message": "Booking is already cancelled"}`)
+  - `seats` required, integer 1-16 (422 otherwise)
+  - Departure must still have enough seats available (this booking's
+    previous seats do not count)
+  - `total_fare_cny` is recalculated
+}

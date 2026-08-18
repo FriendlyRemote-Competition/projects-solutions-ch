@@ -1,0 +1,41 @@
+meta {
+  name: Create Booking
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/bookings
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "departure_code": "DJ-20260916-0730-DCL",
+    "first_name": "Lin",
+    "last_name": "Wei",
+    "email": "lin.wei@example.cn",
+    "phone": "+8613800138011",
+    "seats": 2
+  }
+}
+
+script:post-response {
+  if (res.getStatus() === 201) {
+    bru.setEnvVar("bookingCode", res.getBody().data.booking_code);
+  }
+}
+
+docs {
+  Creates an anonymous booking, automatically confirmed.
+  On success the generated `booking_code` is stored into the `bookingCode`
+  environment variable for the other booking requests.
+
+  Validation (422 on failure):
+  - `phone` optional
+  - `first_name`, `last_name` required, max 60 chars each
+  - `email` required, valid address
+  - `seats` required, integer 1-16
+  - departure must have at least `seats` available
+}
