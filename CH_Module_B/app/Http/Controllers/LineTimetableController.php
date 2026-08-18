@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Departure;
 use App\Models\CancelledDeparture;
 use App\Models\Line;
 use Carbon\Carbon;
@@ -24,7 +25,10 @@ class LineTimetableController extends Controller
         if ($line->line_status == 'suspended') {
             return response()->json([]);
         }
-        return response()->json($line->service_windows()->orderBy("service_start")->get()->map(function ($sw) use ($request, $line) {
+        return response()->json(["data" => Departure::get_departures($line, Carbon::parse($request->query("date", today())), $request->query("station", null))]);
+
+        /*
+        $line->service_windows()->orderBy("service_start")->get()->map(function ($sw) use ($request, $line) {
             $time = Carbon::parse($sw->service_start);
             $end_time = Carbon::parse($sw->service_end);
             $departures = [];
@@ -52,6 +56,7 @@ class LineTimetableController extends Controller
                 $time->addMinutes($sw->interval_minutes);
             }
             return $departures;
-        }));
+        })
+            */
     }
 }

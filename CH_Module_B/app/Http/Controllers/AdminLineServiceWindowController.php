@@ -33,7 +33,6 @@ class AdminLineServiceWindowController extends Controller
     {
         $serviceWindow = $line->service_windows()->where("service_start", $start_time)->first();
 
-
         if (!$serviceWindow) {
             return response()->json(["message" => "Resource not found"], 404);
         }
