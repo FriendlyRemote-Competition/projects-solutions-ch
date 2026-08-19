@@ -1,15 +1,5 @@
 <template>
-  <header class="card">
-    <div class="card-body d-flex justify-content-between align-items-center">
-      <h1 class="base">{{ book.title }}</h1>
-      <div>
-        <label>
-          <span class="visually-hidden">Search</span>
-          <input placeholder="Search..." class="form-control" @keydown.enter="$router.push('/search?query=' + $event.target.value)" />
-        </label>
-      </div>
-    </div>
-  </header>
+  <PageHeader :title="book.title" />
 
   <section>
     <div class="card mt-3" v-for="chapter in chapters" :key="chapter.id">
@@ -23,7 +13,8 @@
 </template>
 
 <script setup>
-import { useData } from '../../composables/data';
+import PageHeader from '@/components/PageHeader.vue';
+import { useData } from '../composables/data';
 
 const { book, chapters } = useData();
 </script>
