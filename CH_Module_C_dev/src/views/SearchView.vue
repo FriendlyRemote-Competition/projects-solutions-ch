@@ -1,13 +1,13 @@
 <template>
-  <PageHeader :title="book.title" />
-
+  <PageHeader :title="`Search the textbook: '${route.query.query}'`" />
+  
   <section>
     <template v-if="searchResults.length">
       <RouterLink
         v-for="result in searchResults"
         :key="result.section.id"
         class="card mt-3"
-        to="/"
+        :to="`/${result.section.id}`"
       >
         <div class="card-body">
           <h2>
