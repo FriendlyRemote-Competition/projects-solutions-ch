@@ -44,6 +44,7 @@
         <RouterLink v-else="" class="btn btn-primary" to="/">
           Back to library
         </RouterLink>
+        <SettingsPanel />
       </div>
     </div>
   </header>
@@ -51,6 +52,7 @@
 
 <script setup>
 import { useBookmarks } from "@/composables/bookmarks";
+import SettingsPanel from "./SettingsPanel.vue";
 
 const props = defineProps(["title", "section", "chapter"]);
 const { bookmarks, addBookmark, deleteBookmark } = useBookmarks();

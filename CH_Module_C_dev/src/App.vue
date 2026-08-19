@@ -5,4 +5,7 @@
 </template>
 
 <script setup>
+import { useSettings } from './composables/settings';
+
+useSettings();
 </script>
