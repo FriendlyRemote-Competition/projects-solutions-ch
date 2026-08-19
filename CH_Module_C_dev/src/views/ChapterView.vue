@@ -1,5 +1,5 @@
 <template>
-  <PageHeader :section="section" :chapter="chapter" />
+  <PageHeader :section="section" />
 
   <div class="progress">
     <div
@@ -21,7 +21,7 @@
         <div class="card-body">
           <h2 class="text-uppercase">Table of contents</h2>
           <ol class="list-unstyled d-flex flex-column gap-2">
-            <li v-for="(s, i) in chapter.sections">
+            <li v-for="(s, i) in section.chapter.sections">
               <RouterLink
                 :to="`/${s.id}`"
                 class="w-100 btn text-start"
@@ -79,11 +79,8 @@ import { computed } from "vue";
 import PageHeader from "@/components/PageHeader.vue";
 
 const route = useRoute();
-const { chapters, sections } = useData();
+const {sections } = useData();
 
-const chapter = computed(() =>
-  chapters.value.find((c) => c.id == route.params.id.split("-")[0]),
-);
 const sectionIndex = computed(() =>
   sections.value.findIndex((s) => s.id == route.params.id),
 );

@@ -10,7 +10,7 @@ export function useData() {
     book.value = data.book;
     chapters.value = data.chapters;
     sections.value = data.chapters.reduce((acc, curr) => {
-      acc.push(...curr.sections)
+      acc.push(...curr.sections.map((s) => ({...s, chapter: curr})))
       return acc
     }, []);
   });

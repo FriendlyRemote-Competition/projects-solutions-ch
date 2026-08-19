@@ -2,11 +2,11 @@
   <header class="card">
     <div class="card-body d-flex justify-content-between align-items-center">
       <RouterLink v-if="section" to="/" class="btn btn-primary">&lt; Library</RouterLink>
-      <h1 v-else class="base">{{ title }}</h1>
+      <h1 v-else>{{ title }}</h1>
       <div>
-        <template v-if="chapter && section">
-          Chapter {{ chapter.number }} > Section {{ chapter.sections.findIndex((s) => s.id == section.id) + 1 }} of {{ chapter.sections.length }}
-        </template>
+        <h1 v-if="section" class="small">
+          Chapter {{ section.chapter.number }} > Section {{ section.chapter.sections.findIndex((s) => s.id == section.id) + 1 }} of {{ chapter.sections.length }}
+        </h1>
       </div>
       <div>
         <label>
@@ -17,6 +17,7 @@
             @keydown.enter="
               $router.push('/search?query=' + $event.target.value)
             "
+            :value="$route.query.query"
           />
         </label>
       </div>
