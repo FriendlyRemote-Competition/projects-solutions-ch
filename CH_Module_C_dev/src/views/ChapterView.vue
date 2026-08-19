@@ -1,41 +1,39 @@
 <template>
   <template v-if="section">
-
     <PageHeader :section="section" />
   
     <div class="progress">
       <div
         class="progress-bar bg-primary"
         role="progressbar"
-        :style="{width: `${100 / section.chapter.sections.length * section.chapter.sections.filter((s) => readSections.includes(s.id)).length}%`}"
+        :style="{width: `${100 / section.chapter.sections.length * getReadSections(section.chapter.sections).length}%`}"
         aria-valuenow="25"
         aria-valuemin="0"
         aria-valuemax="100"
       >
-        Chapter reading progress
       </div>
     </div>
   
-    <div class="row mt-3">
-      <div class="col-12 col-md-4">
+    <div class="row mt-3 row-gap-4">
+      <div class="col-12 col-lg-4">
         <div class="card h-100">
           <div class="card-body">
             <h2 class="text-uppercase">Table of contents</h2>
-            <ol class="list-unstyled d-flex flex-column gap-2">
+            <ol class="list-unstyled d-flex flex-column gap-2 mt-4">
               <li v-for="(s, i) in section.chapter.sections">
                 <RouterLink
                   :to="`/${s.id}`"
                   class="w-100 btn text-start"
                   :class="s.id == section.id ? 'btn-primary' : 'btn-light'"
                 >
-                  {{ i + 1 }}. {{ s.heading }} {{ readSections.includes(s.id) ? '(read)' : '' }}
+                  {{ i + 1 }}. {{ s.heading }} {{ readSections.includes(s.id) ? '(Completed)' : '' }}
                 </RouterLink>
               </li>
             </ol>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8">
+      <div class="col-12 col-lg-8">
         <div class="card h-100">
           <div class="card-body">
             <h2>{{ section.heading }}</h2>
@@ -86,7 +84,7 @@ import { useReadingProgress } from "@/composables/readingProgress";
 
 const route = useRoute();
 const { sections } = useData();
-const { readSections, addReadSection } = useReadingProgress();
+const { readSections, addReadSection, getReadSections } = useReadingProgress();
 
 const sectionIndex = computed(() =>
   sections.value.findIndex((s) => s.id == route.params.id),

@@ -1,36 +1,18 @@
 <template>
   <PageHeader :title="`Search the textbook: '${route.query.query}'`" />
-  
+
   <section>
     <template v-if="searchResults.length">
-      <RouterLink
+      <SearchCard
         v-for="result in searchResults"
         :key="result.section.id"
-        class="card mt-3"
-        :to="`/${result.section.id}`"
-      >
-        <div class="card-body">
-          <h2>
-            Chapter {{ result.section.chapter.number }} > Section
-            {{
-              result.section.chapter.sections.findIndex(
-                (s) => s.id == result.section.id,
-              ) + 1
-            }}. {{ result.section.heading }}
-          </h2>
-          <p>
-            {{ result.excerptBefore.length == 30 ? "..." : "" }}{{ result.excerptBefore
-            }}<span class="bg-primary text-white">{{ result.excerptHighlight }}</span
-            >{{ result.excerptAfter }}{{ result.excerptAfter.length == 30 ? "..." : "" }}
-          </p>
-          <small><i>Match found in the section {{ result.headingMatch ? "heading" : "text" }}</i></small>
-        </div>
-      </RouterLink>
+        :result="result"
+      />
     </template>
     <div v-else class="card mt-3">
       <div class="card-body">
         <h2>no results found</h2>
-        <p>No results found.<br/>Try another search term.</p>
+        <p>No results found.<br />Try another search term.</p>
       </div>
     </div>
   </section>
@@ -38,11 +20,12 @@
 
 <script setup>
 import PageHeader from "@/components/PageHeader.vue";
+import SearchCard from "@/components/SearchCard.vue";
 import { useData } from "@/composables/data";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 
-const { book, sections } = useData();
+const { sections } = useData();
 const route = useRoute();
 
 const searchResults = computed(() => {

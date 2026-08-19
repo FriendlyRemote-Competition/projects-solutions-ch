@@ -1,8 +1,10 @@
 <template>
   <header class="card">
-    <div class="card-body d-flex justify-content-between align-items-center">
+    <div
+      class="card-body d-flex flex-column gap-2 flex-lg-row justify-content-between align-items-lg-center"
+    >
       <RouterLink v-if="section" to="/" class="btn btn-primary"
-        >&lt; Library</RouterLink
+        >Back to library</RouterLink
       >
       <h1 v-else>{{ title }}</h1>
 
@@ -16,7 +18,7 @@
         </h1>
       </div>
 
-      <div class="d-flex align-items-center gap-2">
+      <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
         <label>
           <span class="visually-hidden">Search</span>
           <input
@@ -39,9 +41,15 @@
               : addBookmark(section.id)
           "
         >
-          {{ bookmarks.includes(section.id) ? "Delete bookmark" : "Save bookmark" }}
+          {{
+            bookmarks.includes(section.id) ? "Delete bookmark" : "Save bookmark"
+          }}
         </button>
-        <RouterLink v-else-if="$route.path == '/'" class="btn btn-primary" to="/bookmarks">
+        <RouterLink
+          v-else-if="$route.path == '/'"
+          class="btn btn-primary"
+          to="/bookmarks"
+        >
           View bookmarks
         </RouterLink>
         <RouterLink v-else="" class="btn btn-primary" to="/">
