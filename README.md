@@ -27,7 +27,9 @@ When testing using Bruno, I had to use the baseUrl `http://127.0.0.1/CH_Module_B
 
 http://localhost/CH_Module_C
 
-### Module C Development Files
+As the TP doesn't specify, pages where developed primarily for firefox.
+
+### Development Files
 
 ```cd
 cd /var/www/html/CH_Module_C_dev
@@ -36,3 +38,5 @@ npm run dev
 ```
 
 http://localhost:3000/CH_Module_C
+
+Requires port 3000 to be exposed by docker. Can be edited in the `docker-compose.yml`.
