@@ -5,6 +5,7 @@
         >&lt; Library</RouterLink
       >
       <h1 v-else>{{ title }}</h1>
+
       <div>
         <h1 v-if="section" class="small">
           Chapter {{ section.chapter.number }} > Section
@@ -14,6 +15,7 @@
           of {{ section.chapter.sections.length }}
         </h1>
       </div>
+
       <div class="d-flex align-items-center gap-2">
         <label>
           <span class="visually-hidden">Search</span>
@@ -26,6 +28,7 @@
             :value="$route.query.query"
           />
         </label>
+
         <button
           v-if="section && bookmarks != null"
           class="btn"
@@ -38,7 +41,7 @@
         >
           {{ bookmarks.includes(section.id) ? "Delete bookmark" : "Save bookmark" }}
         </button>
-        <RouterLink v-else-if="$route.path != '/bookmarks'" class="btn btn-primary" to="/bookmarks">
+        <RouterLink v-else-if="$route.path == '/'" class="btn btn-primary" to="/bookmarks">
           View bookmarks
         </RouterLink>
         <RouterLink v-else="" class="btn btn-primary" to="/">

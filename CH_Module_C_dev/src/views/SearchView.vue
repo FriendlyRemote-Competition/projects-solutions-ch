@@ -30,6 +30,7 @@
     <div v-else class="card mt-3">
       <div class="card-body">
         <h2>no results found</h2>
+        <p>No results found.<br/>Try another search term.</p>
       </div>
     </div>
   </section>

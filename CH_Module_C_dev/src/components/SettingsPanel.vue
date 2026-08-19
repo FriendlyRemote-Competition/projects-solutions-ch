@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import { useData } from '@/composables/data';
 import { useSettings } from '@/composables/settings';
 
 const { fontSize, colorTheme, lineSpacing, setFontSize, setColorTheme, setLineSpacing } = useSettings();
