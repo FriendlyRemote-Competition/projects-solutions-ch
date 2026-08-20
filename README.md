@@ -44,3 +44,5 @@ Requires port 3000 to be exposed by docker. Can be edited in the `docker-compose
 ## Module D - Design Implementation
 
 http://localhost/CH_Module_D
+
+As the TP doesn't specify, pages where developed primarily for firefox.
