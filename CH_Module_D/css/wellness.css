@@ -1,4 +1,6 @@
 #wellness {
+  background-color: var(--color-porcelain);
+
   .section-header {
     position: relative;
     height: 60vh;
@@ -43,7 +45,8 @@
     }
 
     p {
-      color: var(--color-river);
+      color: var(--color-ink);
+      opacity: 0.6;
       line-height: 1.75;
       margin-bottom: 20px;
     }

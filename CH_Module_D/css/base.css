@@ -18,13 +18,15 @@
 body {
   background-color: var(--color-white);
   color: var(--color-ink);
+  overflow-x: hidden;
 }
 
 .container {
   padding-inline: 20px;
 }
 
-section {
+section,
+footer {
   padding: 80px 0;
 }
 
@@ -52,7 +54,8 @@ h2 {
 }
 
 .section-body {
-  color: var(--color-river);
+  color: var(--color-ink);
+  opacity: 0.8;
   line-height: 1.75;
   margin-bottom: 48px;
 }
