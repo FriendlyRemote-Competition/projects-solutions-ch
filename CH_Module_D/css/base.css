@@ -1,22 +1,42 @@
 :root {
   --color-ink: #151719;
-  --color-river: #23343B;
-  --color-porcelain: #F4F0E8;
-  --color-brick: #8A4F3D;
-  --color-brass: #B28A52;
-  --color-mist: #D8DDDA;
-  --color-white: #FFFFFF;
+  --color-river: #23343b;
+  --color-porcelain: #f4f0e8;
+  --color-brick: #8a4f3d;
+  --color-brass: #b28a52;
+  --color-mist: #d8ddda;
+  --color-white: #ffffff;
 
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 * {
-  font-family: 'Inter-Regular', sans-serif;
+  font-family: "Inter-Regular", sans-serif;
 }
 
 body {
   background-color: var(--color-white);
   color: var(--color-ink);
+}
+
+h1,
+h2 {
+  font-family: "CormoranteGaramond", serif;
+  font-size: 48px;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 32px;
+  font-weight: 900;
+}
+
+.eyebrow {
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 button {
@@ -25,4 +45,11 @@ button {
   background-color: var(--color-ink);
   color: var(--color-white);
   padding: 12px 20px;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
 }

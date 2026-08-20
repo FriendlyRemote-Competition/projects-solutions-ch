@@ -21,23 +21,7 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 
-  p:first-child {
-    font-family: 'Inter-Medium', sans-serif;
-    margin-top: 0;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-  }
-
-  h1 {
-    font-family: 'CormoranteGaramond', serif;
-    font-size: 48px;
-    line-height: 1;
-    margin-top: 0;
-    margin-bottom: 32px;
-    font-weight: 900;
-  }
-
-  p:not(:first-child) {
+  p:not(.eyebrow) {
     font-size: 18px;
   }
 
@@ -52,7 +36,7 @@
 
     button {
       background-color: var(--color-brass);
-      color: var(--color-ink)
+      color: var(--color-ink);
     }
 
     a {

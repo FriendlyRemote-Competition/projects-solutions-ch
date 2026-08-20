@@ -1,0 +1,38 @@
+#hotel {
+  padding: 64px 0;
+  
+  img {
+    width: 100%;
+    margin-bottom: 64px;
+  }
+
+  p:not(.eyebrow) {
+    color: var(--color-river);
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      width: 33%;
+    }
+
+    .value {
+      color: var(--color-brick);
+      font-family: "CormoranteGaramond", serif;
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .label {
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+  }
+}
