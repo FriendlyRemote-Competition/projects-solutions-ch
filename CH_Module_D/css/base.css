@@ -1,0 +1,28 @@
+:root {
+  --color-ink: #151719;
+  --color-river: #23343B;
+  --color-porcelain: #F4F0E8;
+  --color-brick: #8A4F3D;
+  --color-brass: #B28A52;
+  --color-mist: #D8DDDA;
+  --color-white: #FFFFFF;
+
+  font-size: 16px;
+}
+
+* {
+  font-family: 'Inter-Regular', sans-serif;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-ink);
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: var(--color-ink);
+  color: var(--color-white);
+  padding: 12px 20px;
+}

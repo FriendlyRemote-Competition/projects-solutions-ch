@@ -40,3 +40,7 @@ npm run dev
 http://localhost:3000/CH_Module_C
 
 Requires port 3000 to be exposed by docker. Can be edited in the `docker-compose.yml`.
+
+## Module D - Design Implementation
+
+http://localhost/CH_Module_D

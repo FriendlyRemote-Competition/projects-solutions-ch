@@ -1,0 +1,32 @@
+.navbar {
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .navbar-toggler {
+    border: 1px solid var(--color-ink);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 2px;
+    box-shadow: none;
+    position: relative;
+    z-index: 20;
+
+    background-image: url("/CH_Module_D/media/icons/icon-close.svg");
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    &[aria-expanded="false"] {
+      border-color: var(--color-white);
+      background-image: url("/CH_Module_D/media/icons/icon-menu.svg");
+    }
+  }
+
+  .navbar-collapse.collapse show {
+    background-color: var(--color-mist);
+    position: fixed;
+    inset: 0;
+  }
+}

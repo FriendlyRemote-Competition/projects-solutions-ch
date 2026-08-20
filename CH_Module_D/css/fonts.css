@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Inter-Regular';
+  src: url("/CH_Module_D/media/fonts/Inter-Regular.woff2");
+}
+@font-face {
+  font-family: 'Inter-Medium';
+  src: url("/CH_Module_D/media/fonts/Inter-Medium.woff2");
+}
+@font-face {
+  font-family: 'CormoranteGaramond';
+  src: url("/CH_Module_D/media/fonts/CormorantGaramond-SemiBold.woff2")
+}
