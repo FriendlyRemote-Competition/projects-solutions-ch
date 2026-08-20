@@ -23,7 +23,6 @@
   }
 
   .section-body {
-    font-size: 18px;
     color: var(--color-mist);
     margin-bottom: 40px;
   }
@@ -49,8 +48,23 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   #hero {
     height: 90vh;
+
+    h1 {
+      max-width: 70%;
+    }
+
+    .section-body {
+      max-width: 55%;
+    }
+
+    .actions {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
   }
 }
+

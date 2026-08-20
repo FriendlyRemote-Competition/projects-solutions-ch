@@ -1,5 +1,5 @@
 #hotel {
-   img {
+  img {
     width: 100%;
     margin-bottom: 64px;
   }
@@ -25,6 +25,34 @@
     .label {
       text-transform: uppercase;
       font-size: 14px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #hotel {
+    img {
+      max-width: 600px;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #hotel {
+    > div {
+      display: flex;
+      gap: 64px;
+
+      img {
+        width: 400px;
+        height: 100%;
+        object-fit: cover;
+        margin: 0;
+      }
+
+      > :last-child {
+        padding: 64px 0;
+      }
     }
   }
 }

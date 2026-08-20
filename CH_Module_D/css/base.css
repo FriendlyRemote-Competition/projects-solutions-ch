@@ -20,6 +20,10 @@ body {
   color: var(--color-ink);
 }
 
+.container {
+  padding-inline: 20px;
+}
+
 section {
   padding: 80px 0;
 }
@@ -32,6 +36,10 @@ h2 {
   margin-top: 0;
   margin-bottom: 32px;
   font-weight: 900;
+}
+
+h2 {
+  font-size: 40px;
 }
 
 .eyebrow {
@@ -54,11 +62,25 @@ button {
   outline: none;
   background-color: var(--color-ink);
   color: var(--color-white);
-  padding: 12px 20px;
+  padding: 16px 28px;
   text-transform: uppercase;
 }
 
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 64px;
+  }
+
+  .section-body {
+    max-width: 80%;
+  }
+}
+
 @media screen and (min-width: 992px) {
+  .section-body {
+    max-width: unset;
+  }
+
   .section-header {
     display: flex;
     justify-content: space-between;
@@ -78,5 +100,9 @@ button {
 @media (prefers-reduced-motion: reduce) {
   :root {
     scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
   }
 }
