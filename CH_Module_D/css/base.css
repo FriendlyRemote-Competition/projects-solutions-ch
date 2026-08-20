@@ -20,6 +20,10 @@ body {
   color: var(--color-ink);
 }
 
+section {
+  padding: 80px 0;
+}
+
 h1,
 h2 {
   font-family: "CormoranteGaramond", serif;
@@ -39,6 +43,12 @@ h2 {
   text-transform: uppercase;
 }
 
+.section-body {
+  color: var(--color-river);
+  line-height: 1.75;
+  margin-bottom: 48px;
+}
+
 button {
   border: none;
   outline: none;
@@ -46,6 +56,23 @@ button {
   color: var(--color-white);
   padding: 12px 20px;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 992px) {
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    :first-child {
+      flex: 1 0 auto;
+    }
+
+    .section-body {
+      font-size: 14px;
+      width: 300px;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

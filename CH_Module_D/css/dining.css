@@ -1,0 +1,8 @@
+#dining {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+
+  .section-body {
+    color: var(--color-mist);
+  }
+}
